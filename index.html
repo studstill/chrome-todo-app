@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="todo.css">
+  <title>To-Do List</title>
+</head>
+<body data-ng-app="todoApp" data-ng-cloak>
+  <article data-ng-controller="todoCtrl" class="center-block wrap">
+    <header class="header">
+      Total Todo's: {{getTotalTodos()}}
+    </header>
+      <div class="wrap-list">
+        <ul class="list list-unstyled">
+          <li data-ng-repeat="todo in todos">
+            <input type="checkbox" id="check-{{todos.indexOf(todo)}}" data-checked="checked" data-ng-model="todo.done">
+            <label for="check-{{todos.indexOf(todo)}}">{{ todo.text }}</label>
+          </li>
+        </ul>
+        <form class="form-horizontal">
+          <input type="text" data-ng-model="formTodoText" ng-model-instant class="form-control"  data-ng-show="todos.length < 8" maxlength="30">
+          <button class="btn btn-default" data-ng-click="addTodo()"  data-ng-show="todos.length < 8"><i class="glyphicon glyphicon-plus"></i> Add</button>
+          <button class="btn btn-default" data-ng-click="clearCompleted()"><i class="glyphicon glyphicon-trash"></i> Clear Complete</button>
+        </form>
+      </div>
+  </article>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+  <script type="text/javascript" src="todo.js"></script>
+</body>
+</html>
