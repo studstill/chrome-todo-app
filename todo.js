@@ -1,7 +1,7 @@
 var app = angular.module('todoApp', []);
 
 app.controller('todoCtrl', ['$scope', function($scope) {
-  if (localStorage.todos !== null) {
+  if (localStorage.todos) {
     var todoArray = [];
     storedList = JSON.parse(localStorage.todos);
     for (item in storedList) {
